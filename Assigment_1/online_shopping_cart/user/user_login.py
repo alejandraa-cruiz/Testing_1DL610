@@ -1,6 +1,6 @@
-from online_shopping_cart.user.user_authentication import UserAuthenticator
-from online_shopping_cart.user.user_interface import UserInterface
-from online_shopping_cart.user.user_data import UserDataManager
+from Assigment_1.online_shopping_cart.user.user_authentication import UserAuthenticator
+from Assigment_1.online_shopping_cart.user.user_interface import UserInterface
+from Assigment_1.online_shopping_cart.user.user_data import UserDataManager
 
 ########################
 # USER LOGIN FUNCTIONS #

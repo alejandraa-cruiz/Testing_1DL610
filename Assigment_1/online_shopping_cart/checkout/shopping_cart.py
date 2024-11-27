@@ -1,4 +1,4 @@
-from online_shopping_cart.product.product import Product
+from Assigment_1.online_shopping_cart.product.product import Product
 
 ##################################
 # CHECKOUT SHOPPING CART CLASSES #

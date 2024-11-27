@@ -1,10 +1,10 @@
-from online_shopping_cart.checkout.shopping_cart import ShoppingCart
-from online_shopping_cart.product.product_data import get_products
-from online_shopping_cart.user.user_interface import UserInterface
-from online_shopping_cart.product.product import Product
-from online_shopping_cart.user.user_logout import logout
-from online_shopping_cart.user.user import User
-from online_shopping_cart.user.user_data import UserDataManager
+from Assigment_1.online_shopping_cart.checkout.shopping_cart import ShoppingCart
+from Assigment_1.online_shopping_cart.product.product_data import get_products
+from Assigment_1.online_shopping_cart.user.user_interface import UserInterface
+from Assigment_1.online_shopping_cart.product.product import Product
+from Assigment_1.online_shopping_cart.user.user_logout import logout
+from Assigment_1.online_shopping_cart.user.user import User
+from Assigment_1.online_shopping_cart.user.user_data import UserDataManager
 
 ############################
 # CHECKOUT PROCESS GLOBALS #
