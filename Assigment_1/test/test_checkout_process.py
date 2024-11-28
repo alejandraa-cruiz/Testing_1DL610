@@ -1,5 +1,4 @@
 import pytest
-from unittest.mock import MagicMock
 from Assigment_1.online_shopping_cart.user.user_interface import UserInterface
 from Assigment_1.online_shopping_cart.checkout.checkout_process import (
     checkout_and_payment,
@@ -30,7 +29,12 @@ def mock_1_1_3(mocker):
         "Assigment_1.online_shopping_cart.user.user_interface.UserInterface.get_user_input",
         side_effect=["D", "l", "y"],
     )
-
+@pytest.fixture
+def mock_1_2_1(mocker):
+    return mocker.patch(
+        "Assigment_1.online_shopping_cart.user.user_interface.UserInterface.get_user_input",
+        side_effect=["j", "l", "y"],
+    )
 @pytest.fixture
 def mock_display_products_available_for_purchase(mocker):
     return mocker.patch(
@@ -60,10 +64,24 @@ def mock_2_1_3(mocker):
     )
 
 @pytest.fixture
+def mock_2_2_1(mocker):
+    return mocker.patch(
+        "Assigment_1.online_shopping_cart.user.user_interface.UserInterface.get_user_input",
+        side_effect=["@#$", "l", "y"],
+    )
+
+@pytest.fixture
 def mock_check_cart(mocker):
     return mocker.patch(
         "Assigment_1.online_shopping_cart.checkout.checkout_process.check_cart",
         return_value="Successful checkout",
+    )
+
+@pytest.fixture
+def mock_3_2_1(mocker):
+    return mocker.patch(
+        "Assigment_1.online_shopping_cart.user.user_interface.UserInterface.get_user_input",
+        side_effect=[" l", "l", "y"],
     )
 
 
@@ -72,11 +90,8 @@ def test1_1_1_checkout_and_payment_calls_display_products(
     mock_1_1_1, mock_display_products_available_for_purchase
 ):
     print("Test: test_checkout_and_payment_calls_display_products")
-    # Act: Call the checkout_and_payment function with mocked login info
     with pytest.raises(SystemExit) as pytest_wrapped_e:
         checkout_and_payment(mock_login_info)
-
-    # Assert: Ensure that display_products_available_for_purchase was called once
     mock_display_products_available_for_purchase.assert_called_once()
     assert pytest_wrapped_e.type == SystemExit
     assert pytest_wrapped_e.value.code == 0
@@ -85,11 +100,8 @@ def test1_1_2_checkout_and_payment_calls_display_products(
     mock_1_1_2, mock_display_products_available_for_purchase
 ):
     print("Test: test_checkout_and_payment_calls_display_products")
-    # Act: Call the checkout_and_payment function with mocked login info
     with pytest.raises(SystemExit) as pytest_wrapped_e:
         checkout_and_payment(mock_login_info)
-
-    # Assert: Ensure that display_products_available_for_purchase was called once
     mock_display_products_available_for_purchase.assert_called_once()
     assert pytest_wrapped_e.type == SystemExit
     assert pytest_wrapped_e.value.code == 0
@@ -98,38 +110,39 @@ def test1_1_3_checkout_and_payment_calls_display_products(
     mock_1_1_3, mock_display_products_available_for_purchase
 ):
     print("Test: test_checkout_and_payment_calls_display_products")
-    # Act: Call the checkout_and_payment function with mocked login info
     with pytest.raises(SystemExit) as pytest_wrapped_e:
         checkout_and_payment(mock_login_info)
-
-    # Assert: Ensure that display_products_available_for_purchase was called once
     mock_display_products_available_for_purchase.assert_called_once()
     assert pytest_wrapped_e.type == SystemExit
     assert pytest_wrapped_e.value.code == 0
 
+def test1_2_1invalid_input(
+        capfd, mock_1_2_1
+):
+    with pytest.raises(SystemExit) as pytest_wrapped_e:
+        checkout_and_payment(mock_login_info)
+    out, err = capfd.readouterr()
+    assert "Invalid input. Please try again." in out
+    assert pytest_wrapped_e.type == SystemExit
+    assert pytest_wrapped_e.value.code == 0
+
+#TC2.1
 def test2_1_1_checkout_and_payment_calls_check_cart(
     mock_2_1_1, mock_check_cart
 ):
     print("Test: test_checkout_and_payment_calls_display_products")
-    # Act: Call the checkout_and_payment function with mocked login info
     with pytest.raises(SystemExit) as pytest_wrapped_e:
         checkout_and_payment(mock_login_info)
-
-    # Assert: Ensure that display_products_available_for_purchase was called once
     mock_check_cart.assert_called_once()
     assert pytest_wrapped_e.type == SystemExit
     assert pytest_wrapped_e.value.code == 0
 
-#TC 3.1
 def test2_1_2_checkout_and_payment_calls_check_cart(
     mock_2_1_2, mock_check_cart
 ):
     print("Test: test_checkout_and_payment_calls_display_products")
-    # Act: Call the checkout_and_payment function with mocked login info
     with pytest.raises(SystemExit) as pytest_wrapped_e:
         checkout_and_payment(mock_login_info)
-
-    # Assert: Ensure that display_products_available_for_purchase was called once
     mock_check_cart.assert_called_once()
     assert pytest_wrapped_e.type == SystemExit
     assert pytest_wrapped_e.value.code == 0
@@ -138,11 +151,28 @@ def test2_1_3_checkout_and_payment_calls_check_cart(
     mock_2_1_3, mock_check_cart
 ):
     print("Test: test_checkout_and_payment_calls_display_products")
-    # Act: Call the checkout_and_payment function with mocked login info
     with pytest.raises(SystemExit) as pytest_wrapped_e:
         checkout_and_payment(mock_login_info)
-
-    # Assert: Ensure that display_products_available_for_purchase was called once
     mock_check_cart.assert_called_once()
+    assert pytest_wrapped_e.type == SystemExit
+    assert pytest_wrapped_e.value.code == 0
+
+def test2_2_1invalid_input(
+        capfd, mock_2_2_1
+):
+    with pytest.raises(SystemExit) as pytest_wrapped_e:
+        checkout_and_payment(mock_login_info)
+    out, err = capfd.readouterr()
+    assert "Invalid input. Please try again." in out
+    assert pytest_wrapped_e.type == SystemExit
+    assert pytest_wrapped_e.value.code == 0
+
+def test3_2_1invalid_input(
+        capfd, mock_2_2_1
+):
+    with pytest.raises(SystemExit) as pytest_wrapped_e:
+        checkout_and_payment(mock_login_info)
+    out, err = capfd.readouterr()
+    assert "Invalid input. Please try again." in out
     assert pytest_wrapped_e.type == SystemExit
     assert pytest_wrapped_e.value.code == 0
