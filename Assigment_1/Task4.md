@@ -67,29 +67,29 @@ Once the test requirements are defined we write the test cases to fulfill the co
 
 **Coverage criterion:** testing at least two valid inputs for each equivalence class, and one invalid input.
 
-| **Test Case Id** | **Inputs**                                                         | **Test Case**                                                 |
-|------------------|--------------------------------------------------------------------|---------------------------------------------------------------|
-| TC1.1.1          | login info = [Rover, Dog12@34], choice="d"                         | calls display_list_of_products()                              |
-| TC1.1.2          | login info = [Rover, Dog12@34], choice="d "                        | calls display_list_of_products()                              |
-| TC1.1.3          | login info = [Rover, Dog12@34], choice="D"                         | calls display_list_of_products()                              |
-| TC1.2.1          | login info = [Rover, Dog12@34], choice="j"                         | "Invalid input. Please try again."                            |
-| TC2.1.1          | login info = [Rover, Dog12@34], cart=[Apple, Banana], choice="c"   | calls check_cart()                                            |
-| TC2.1.2          | login info = [Rover, Dog12@34], cart=[Apple, Banana], choice="C"   | calls check_cart()                                            |
-| TC2.1.3          | login info = [Rover, Dog12@34], cart=[Apple, Banana], choice="C "  | "calls check_cart()                                           |
-| TC2.2.1          | login info = [Rover, Dog12@34], cart=[Apple, Banana], choice="@#$" | "Invalid input. Please try again."                            |
-| TC3.1.1          | login info = [Rover, Dog12@34], cart=[], choice="l"                | exit value code = 0                                           |
-| TC3.1.2          | login info = [Rover, Dog12@34], cart=[], choice="L "               | exit value code = 0                                           |
-| TC3.1.3          | login info = [Rover, Dog12@34], cart=[], choice="L"                | exit value code = 0                                           |
-| TC3.2.1          | login info = [Rover, Dog12@34], cart=[], choice=" l"               | "Invalid input. Please try again."                            |
-| TC4.1.1          | login info = [Rover, Dog12@34], cart=[], choice="1"                | `cart=[Apple]`                                                |
-| TC4.1.2          | login info = [Rover, Dog12@34], cart=[], choice="71"               | `cart=[Backpack]`                                             |
-| TC4.1.3          | login info = [Luna, Moonlight#456], cart=[Batteries], choice="50"  | `cart=[Batteries, Batteries]`                                 |
-| TC4.2.1          | login info = [Rover, Dog12@34], cart=[], choice="1867"             | "Invalid input. Please try again."              |
-| TC4.2.2          | login info = [Rover, Dog12@34], cart=[], choice="-897"             | "Invalid input. Please try again."              |
-| TC4.2.3          | login info = [Rover, Dog12@34], cart=[], choice="9%3"              | "Invalid input. Please try again."               |
-| TC4.2.4          | login info = [Rover, Dog12@34], cart=[], choice="8.9"              | "Invalid input. Please try again."               |
-| TC5.1.1          | login info = [Rover, Dog12@34], cart=[], choice="53"               | "Headphones added to your cart." and `cart=[Headphones]`      |
-| TC5.1.2          | login info = [Rover, Dog12@34], cart=[], choice="61 "              | "Dumbbells added to your cart." and `cart=[Dumbbells]`        |
-| TC5.1.3          | login info = [Luna, Moonlight#456], cart=[Apple], choice="36"      | "Cereal added to your cart." and `cart=[Apple, Cereal]`       |
-| TC5.2.1          | login info = [Rover, Dog12@34], cart=[Watermelon]                  | "Sorry, Watermelon is out of stock."                          |
-| TC5.2.2          | login info = [Rover, Dog12@34], cart=[Backpack]                    | "Sorry, Backpack is out of stock."                            |
+| **Test Case Id** | **Inputs**                                                    | **Test Case**                        |
+|------------------|---------------------------------------------------------------|--------------------------------------|
+| TC1.1.1          | login info = [Rover, Dog12@34], choice="d"                    | calls display_list_of_products()     |
+| TC1.1.2          | login info = [Rover, Dog12@34], choice="d "                   | calls display_list_of_products()     |
+| TC1.1.3          | login info = [Rover, Dog12@34], choice="D"                    | calls display_list_of_products()     |
+| TC1.2.1          | login info = [Rover, Dog12@34], choice="j"                    | "Invalid input. Please try again."   |
+| TC2.1.1          | login info = [Rover, Dog12@34],  choice="c"                   | calls check_cart()                   |
+| TC2.1.2          | login info = [Rover, Dog12@34],  choice="C"                   | calls check_cart()                   |
+| TC2.1.3          | login info = [Rover, Dog12@34],  choice="C "                  | "calls check_cart()                  |
+| TC2.2.1          | login info = [Rover, Dog12@34],  choice="@#$"                 | "Invalid input. Please try again."   |
+| TC3.1.1          | login info = [Rover, Dog12@34],  choice="l"                   | exit value code = 0                  |
+| TC3.1.2          | login info = [Rover, Dog12@34],  choice="L "                  | exit value code = 0                  |
+| TC3.1.3          | login info = [Rover, Dog12@34],  choice="L"                   | exit value code = 0                  |
+| TC3.2.1          | login info = [Rover, Dog12@34],  choice=" l"                  | "Invalid input. Please try again."   |
+| TC4.1.1          | login info = [Rover, Dog12@34],  choice="1"                   | "Apple added to your cart."          |
+| TC4.1.2          | login info = [Rover, Dog12@34],  choice="71"                  | "Backpack added to your cart."       |
+| TC4.1.3          | login info = [Luna, Moonlight#456],  choice="50"              | "Batteries added to your cart."      |
+| TC4.2.1          | login info = [Rover, Dog12@34],  choice="1867"                | "Invalid input. Please try again."   |
+| TC4.2.2          | login info = [Rover, Dog12@34],  choice="-897"                | "Invalid input. Please try again."   |
+| TC4.2.3          | login info = [Rover, Dog12@34], choice="9%3"                  | "Invalid input. Please try again."   |
+| TC4.2.4          | login info = [Rover, Dog12@34],  choice="8.9"                 | "Invalid input. Please try again."   |
+| TC5.1.1          | login info = [Rover, Dog12@34],  choice="53"                  | "Headphones added to your cart."     |
+| TC5.1.2          | login info = [Rover, Dog12@34],  choice="61 "                 | "Dumbbells added to your cart."      |
+| TC5.1.3          | login info = [Luna, Moonlight#456], cart=[Apple], choice="36" | "Cereal added to your cart."         |
+| TC5.2.1          | login info = [Rover, Dog12@34], cart=[Watermelon]             | "Sorry, Watermelon is out of stock." |
+| TC5.2.2          | login info = [Rover, Dog12@34], cart=[Backpack]               | "Sorry, Backpack is out of stock."   |
