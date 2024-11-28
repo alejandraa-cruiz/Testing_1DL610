@@ -63,7 +63,7 @@ Now we turn the equivalence classes into testing requirements taking into accoun
 | EC5                   | R5.2               | If input is not in EC5, function should return "Sorry, `{selected_product.name}` is out of stock." |
 
 ## Test Cases 
-Once the test requirements are defined we write the test cases to fulfill the coverage criterion.
+Once the test requirements are defined we write the test cases to fulfill the coverage criterion. TC 3.1.1, 3.1.2, 3.1.3
 
 **Coverage criterion:** testing at least two valid inputs for each equivalence class, and one invalid input.
 
@@ -84,10 +84,10 @@ Once the test requirements are defined we write the test cases to fulfill the co
 | TC4.1.1          | login info = [Rover, Dog12@34], cart=[], choice="1"                | `cart=[Apple]`                                                |
 | TC4.1.2          | login info = [Rover, Dog12@34], cart=[], choice="71"               | `cart=[Backpack]`                                             |
 | TC4.1.3          | login info = [Luna, Moonlight#456], cart=[Batteries], choice="50"  | `cart=[Batteries, Batteries]`                                 |
-| TC4.2.1          | login info = [Rover, Dog12@34], cart=[], choice="1867"             | "Invalid input. Please try again." and `cart=[]`              |
-| TC4.2.2          | login info = [Rover, Dog12@34], cart=[], choice="-897"             | "Invalid input. Please try again." and `cart=[]`              |
-| TC4.2.3          | login info = [Rover, Dog12@34], cart=[], choice="9%3"              | "Invalid input. Please try again." and `cart=[]`              |
-| TC4.2.4          | login info = [Rover, Dog12@34], cart=[], choice="8.9"              | "Invalid input. Please try again." and `cart=[]`              |
+| TC4.2.1          | login info = [Rover, Dog12@34], cart=[], choice="1867"             | "Invalid input. Please try again."              |
+| TC4.2.2          | login info = [Rover, Dog12@34], cart=[], choice="-897"             | "Invalid input. Please try again."              |
+| TC4.2.3          | login info = [Rover, Dog12@34], cart=[], choice="9%3"              | "Invalid input. Please try again."               |
+| TC4.2.4          | login info = [Rover, Dog12@34], cart=[], choice="8.9"              | "Invalid input. Please try again."               |
 | TC5.1.1          | login info = [Rover, Dog12@34], cart=[], choice="53"               | "Headphones added to your cart." and `cart=[Headphones]`      |
 | TC5.1.2          | login info = [Rover, Dog12@34], cart=[], choice="61 "              | "Dumbbells added to your cart." and `cart=[Dumbbells]`        |
 | TC5.1.3          | login info = [Luna, Moonlight#456], cart=[Apple], choice="36"      | "Cereal added to your cart." and `cart=[Apple, Cereal]`       |

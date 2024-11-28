@@ -84,7 +84,38 @@ def mock_3_2_1(mocker):
         side_effect=[" l", "l", "y"],
     )
 
+@pytest.fixture
+def mock_3_2_1(mocker):
+    return mocker.patch(
+        "Assigment_1.online_shopping_cart.user.user_interface.UserInterface.get_user_input",
+        side_effect=[" l", "l", "y"],
+    )
 
+@pytest.fixture
+def mock_4_2_1(mocker):
+    return mocker.patch(
+        "Assigment_1.online_shopping_cart.user.user_interface.UserInterface.get_user_input",
+        side_effect=["1867", "l", "y"],
+    )
+@pytest.fixture
+def mock_4_2_2(mocker):
+    return mocker.patch(
+        "Assigment_1.online_shopping_cart.user.user_interface.UserInterface.get_user_input",
+        side_effect=["-897", "l", "y"],
+    )
+@pytest.fixture
+def mock_4_2_3(mocker):
+    return mocker.patch(
+        "Assigment_1.online_shopping_cart.user.user_interface.UserInterface.get_user_input",
+        side_effect=["9%3", "l", "y"],
+    )
+
+@pytest.fixture
+def mock_4_2_4(mocker):
+    return mocker.patch(
+        "Assigment_1.online_shopping_cart.user.user_interface.UserInterface.get_user_input",
+        side_effect=["8.9", "l", "y"],
+    )
 # TC 1.1 Display list of products
 def test1_1_1_checkout_and_payment_calls_display_products(
     mock_1_1_1, mock_display_products_available_for_purchase
@@ -169,6 +200,46 @@ def test2_2_1invalid_input(
 
 def test3_2_1invalid_input(
         capfd, mock_2_2_1
+):
+    with pytest.raises(SystemExit) as pytest_wrapped_e:
+        checkout_and_payment(mock_login_info)
+    out, err = capfd.readouterr()
+    assert "Invalid input. Please try again." in out
+    assert pytest_wrapped_e.type == SystemExit
+    assert pytest_wrapped_e.value.code == 0
+
+def test4_2_1invalid_input(
+        capfd, mock_4_2_1
+):
+    with pytest.raises(SystemExit) as pytest_wrapped_e:
+        checkout_and_payment(mock_login_info)
+    out, err = capfd.readouterr()
+    assert "Invalid input. Please try again." in out
+    assert pytest_wrapped_e.type == SystemExit
+    assert pytest_wrapped_e.value.code == 0
+
+def test4_2_2invalid_input(
+        capfd, mock_4_2_2
+):
+    with pytest.raises(SystemExit) as pytest_wrapped_e:
+        checkout_and_payment(mock_login_info)
+    out, err = capfd.readouterr()
+    assert "Invalid input. Please try again." in out
+    assert pytest_wrapped_e.type == SystemExit
+    assert pytest_wrapped_e.value.code == 0
+
+def test4_2_3invalid_input(
+        capfd, mock_4_2_3
+):
+    with pytest.raises(SystemExit) as pytest_wrapped_e:
+        checkout_and_payment(mock_login_info)
+    out, err = capfd.readouterr()
+    assert "Invalid input. Please try again." in out
+    assert pytest_wrapped_e.type == SystemExit
+    assert pytest_wrapped_e.value.code == 0
+
+def test4_2_4invalid_input(
+        capfd, mock_4_2_4
 ):
     with pytest.raises(SystemExit) as pytest_wrapped_e:
         checkout_and_payment(mock_login_info)
