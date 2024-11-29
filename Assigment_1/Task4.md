@@ -67,32 +67,32 @@ Once the test requirements are defined we write the test cases to fulfill the co
 
 **Coverage criterion:** testing at least two valid inputs for each equivalence class, and one invalid input.
 
-| **Test Case Id** | **Inputs**                                     | **Test Case**                        |
-|------------------|------------------------------------------------|--------------------------------------|
-| TC1.1.1          | login info = [Rover, Dog12@34], choice="d"     | calls display_list_of_products()     |
-| TC1.1.2          | login info = [Rover, Dog12@34], choice="d "    | calls display_list_of_products()     |
-| TC1.1.3          | login info = [Rover, Dog12@34], choice="D"     | calls display_list_of_products()     |
-| TC1.2.1          | login info = [Rover, Dog12@34], choice="j"     | "Invalid input. Please try again."   |
-| TC2.1.1          | login info = [Rover, Dog12@34],  choice="c"    | calls check_cart()                   |
-| TC2.1.2          | login info = [Rover, Dog12@34],  choice="C"    | calls check_cart()                   |
-| TC2.1.3          | login info = [Rover, Dog12@34],  choice="C "   | "calls check_cart()                  |
-| TC2.2.1          | login info = [Rover, Dog12@34],  choice="@#$"  | "Invalid input. Please try again."   |
-| TC3.1.1          | login info = [Rover, Dog12@34],  choice="l"    | exit value code = 0                  |
-| TC3.1.2          | login info = [Rover, Dog12@34],  choice="L "   | exit value code = 0                  |
-| TC3.1.3          | login info = [Rover, Dog12@34],  choice="L"    | exit value code = 0                  |
-| TC3.2.1          | login info = [Rover, Dog12@34],  choice=" l"   | "Invalid input. Please try again."   |
-| TC4.1.1          | login info = [Rover, Dog12@34],  choice="1"    | "Apple added to your cart."          |
-| TC4.1.2          | login info = [Rover, Dog12@34],  choice="71"   | "Backpack added to your cart."       |
-| TC4.1.3          | login info = [Rover, Dog12@34],  choice="50"   | "Batteries added to your cart."      |
-| TC4.2.1          | login info = [Rover, Dog12@34],  choice="1867" | "Invalid input. Please try again."   |
-| TC4.2.2          | login info = [Rover, Dog12@34],  choice="-897" | "Invalid input. Please try again."   |
-| TC4.2.3          | login info = [Rover, Dog12@34], choice="9%3"   | "Invalid input. Please try again."   |
-| TC4.2.4          | login info = [Rover, Dog12@34],  choice="8.9"  | "Invalid input. Please try again."   |
-| TC5.1.1          | login info = [Rover, Dog12@34],  choice="53"   | "Headphones added to your cart."     |
-| TC5.1.2          | login info = [Rover, Dog12@34],  choice="61 "  | "Dumbbells added to your cart."      |
-| TC5.1.3          | login info = [Rover, Dog12@34], choice="36"    | "Cereal added to your cart."         |
-| TC5.2.1          | login info = [Rover, Dog12@34], choice="6"     | "Sorry, Watermelon is out of stock." |
-| TC5.2.2          | login info = [Rover, Dog12@34], choice"55"     | "Sorry, Coffee is out of stock."     |
+| **Test Case Id** | **Inputs**                                     | **Test Case**                        | **Test status** |
+|------------------|------------------------------------------------|--------------------------------------|-----------------|
+| TC1.1.1          | login info = [Rover, Dog12@34], choice="d"     | calls display_list_of_products()     | Pass            |
+| TC1.1.2          | login info = [Rover, Dog12@34], choice="d "    | calls display_list_of_products()     | Pass            |
+| TC1.1.3          | login info = [Rover, Dog12@34], choice="D"     | calls display_list_of_products()     | Pass            |
+| TC1.2.1          | login info = [Rover, Dog12@34], choice="j"     | "Invalid input. Please try again."   | Pass            |
+| TC2.1.1          | login info = [Rover, Dog12@34],  choice="c"    | calls check_cart()                   | Pass            |
+| TC2.1.2          | login info = [Rover, Dog12@34],  choice="C"    | calls check_cart()                   | Pass            |
+| TC2.1.3          | login info = [Rover, Dog12@34],  choice="C "   | calls check_cart()                   | Pass            |
+| TC2.2.1          | login info = [Rover, Dog12@34],  choice="@#$"  | "Invalid input. Please try again."   | Pass            |
+| TC3.1.1          | login info = [Rover, Dog12@34],  choice="l"    | exit value code = 0                  | Pass            |
+| TC3.1.2          | login info = [Rover, Dog12@34],  choice="L "   | exit value code = 0                  | Pass            |
+| TC3.1.3          | login info = [Rover, Dog12@34],  choice="L"    | exit value code = 0                  | Pass            |
+| TC3.2.1          | login info = [Rover, Dog12@34],  choice=" l"   | "Invalid input. Please try again."   | Pass            |
+| TC4.1.1          | login info = [Rover, Dog12@34],  choice="1"    | "Apple added to your cart."          | Pass            |
+| TC4.1.2          | login info = [Rover, Dog12@34],  choice="71"   | "Backpack added to your cart."       | Pass            |
+| TC4.1.3          | login info = [Rover, Dog12@34],  choice="50"   | "Batteries added to your cart."      | Pass            |
+| TC4.2.1          | login info = [Rover, Dog12@34],  choice="1867" | "Invalid input. Please try again."   | Pass            |
+| TC4.2.2          | login info = [Rover, Dog12@34],  choice="-897" | "Invalid input. Please try again."   | Pass            |
+| TC4.2.3          | login info = [Rover, Dog12@34], choice="9%3"   | "Invalid input. Please try again."   | Pass            |
+| TC4.2.4          | login info = [Rover, Dog12@34],  choice="8.9"  | "Invalid input. Please try again."   | Pass            |
+| TC5.1.1          | login info = [Rover, Dog12@34],  choice="53"   | "Headphones added to your cart."     | Pass            |
+| TC5.1.2          | login info = [Rover, Dog12@34],  choice="61 "  | "Dumbbells added to your cart."      | Pass            |
+| TC5.1.3          | login info = [Rover, Dog12@34], choice="36"    | "Cereal added to your cart."         | Pass            |
+| TC5.2.1          | login info = [Rover, Dog12@34], choice="6"     | "Sorry, Watermelon is out of stock." | Pass            |
+| TC5.2.2          | login info = [Rover, Dog12@34], choice"55"     | "Sorry, Coffee is out of stock."     | Pass            |
 
 ## Testing
 ### Stubs
