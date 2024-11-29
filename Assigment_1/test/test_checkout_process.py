@@ -182,11 +182,11 @@ def test_selecting_products(
     with pytest.raises(SystemExit) as pytest_wrapped_e:
         checkout_and_payment(mock_login_info)
     out, err = capsys.readouterr()
-    assert cart_message in out #RF 4.1 and 4.2
+    assert cart_message in out # RF 4.1 and 4.2
     assert pytest_wrapped_e.type == SystemExit
     assert pytest_wrapped_e.value.code == 0
 
-#EC 5
+# Test data EC 5
 @mark.parametrize(
     "inputs, product_availability_message",
     [
@@ -197,6 +197,8 @@ def test_selecting_products(
         (["55", "55", "l", "y"], "Sorry, TV is out of stock.")           # TC 5.2.2
     ]
 )
+
+#EC 5
 def test_product_availability(
         capsys, mock_user_input, mock_check_cart, mock_logout, mock_global_products,inputs,product_availability_message
 ):
@@ -204,6 +206,6 @@ def test_product_availability(
     with pytest.raises(SystemExit) as pytest_wrapped_e:
         checkout_and_payment(mock_login_info)
     out, err = capsys.readouterr()
-    assert product_availability_message in out
+    assert product_availability_message in out # RF 5.1 and 5.2
     assert pytest_wrapped_e.type == SystemExit
     assert pytest_wrapped_e.value.code == 0
