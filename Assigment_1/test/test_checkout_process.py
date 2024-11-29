@@ -16,7 +16,7 @@ products = [
     Product("Orange", 1.5, 8),
     Product("Grapes", 3, 5),
     Product("Strawberry", 4, 12),
-    Product("Watermelon", 10, 1),
+    Product("Watermelon", 10, 0),
     Product("Carrot", 0.5, 20),
     Product("Broccoli", 1.5, 10),
     Product("Tomato", 1, 15),
@@ -105,7 +105,6 @@ def mock_display_products_available_for_purchase(mocker):
 def mock_check_cart(mocker):
     return mocker.patch(
         "Assigment_1.online_shopping_cart.checkout.checkout_process.check_cart",
-        return_value = "Successful checkout",
     )
 
 @fixture
@@ -183,7 +182,28 @@ def test_selecting_products(
     with pytest.raises(SystemExit) as pytest_wrapped_e:
         checkout_and_payment(mock_login_info)
     out, err = capsys.readouterr()
-    assert cart_message in out
+    assert cart_message in out #RF 4.1 and 4.2
     assert pytest_wrapped_e.type == SystemExit
     assert pytest_wrapped_e.value.code == 0
 
+#EC 5
+@mark.parametrize(
+    "inputs, product_availability_message",
+    [
+        (["53", "l", "y"], "Headphones added to your cart."),            # TC 5.1.1
+        (["61", "l", "y"], "Dumbbells added to your cart."),             # TC 5.1.2
+        (["36","l", "y"], "Cereal added to your cart."),                 # TC 5.1.3
+        (["6", "6", "l", "y"], "Sorry, Watermelon is out of stock."),    # TC 5.2.1
+        (["55", "55", "l", "y"], "Sorry, TV is out of stock.")           # TC 5.2.2
+    ]
+)
+def test_product_availability(
+        capsys, mock_user_input, mock_check_cart, mock_logout, mock_global_products,inputs,product_availability_message
+):
+    mock_user_input(inputs)
+    with pytest.raises(SystemExit) as pytest_wrapped_e:
+        checkout_and_payment(mock_login_info)
+    out, err = capsys.readouterr()
+    assert product_availability_message in out
+    assert pytest_wrapped_e.type == SystemExit
+    assert pytest_wrapped_e.value.code == 0
