@@ -93,3 +93,21 @@ Once the test requirements are defined we write the test cases to fulfill the co
 | TC5.1.3          | login info = [Rover, Dog12@34], choice="36"    | "Cereal added to your cart."         |
 | TC5.2.1          | login info = [Rover, Dog12@34], choice="6"     | "Sorry, Watermelon is out of stock." |
 | TC5.2.2          | login info = [Rover, Dog12@34], choice"55"     | "Sorry, Coffee is out of stock."     |
+
+## Testing
+### Stubs
+The following stubs were programmed using fixtures
+ - `mock_user_input`
+ - `mock_display_products_available_for_purchase`
+ - `mock_check_cart`
+ - `mock_logout`
+ - `mock_global_products`
+
+### Test Values
+Test values are manage using `@mark.parametrize` from `pytest` which allows us to test more efficiently and write fewer test functions when testing particular behaviors just with different values.
+
+### Tests
+All the equivalence classes are covered in 3 test functions:
+- `test_choices_from_menu` for EC1, EC2 and EC3 that cover the user selecting an option from the menu
+- `test_selecting_products` for EC4 that cover the user inputs a products and add it to the cart
+- `test_product_availability` for EC5 that validates that the product is in stock when trying to buy it
