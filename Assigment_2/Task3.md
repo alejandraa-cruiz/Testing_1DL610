@@ -54,25 +54,26 @@ Predicate coverage is achieved for `p` because test case 1 evaluates to `True` a
 
 | **Case** | `runway_clear` | `alternate_runway_available` | `plane_speed` | `emergency` | `wind_speed` | `visibility` | `airport_traffic` | `priority_status` | **Expected Outcome** |
 |----------|----------------|------------------------------|---------------|-------------|--------------|--------------|-------------------|-------------------|----------------------|
-| 1        | True           | True                         | 100           | False       | 30           | 2000         | 5                 | False             | Landing allowed      |
-| 2        | True           | False                        | 150           | False       | 40           | 1000         | 4                 | False             | Landing denied       |
-| 3        | False          | True                         | 100           | False       | 40           | 600          | 4                 | False             | Landing denied       |
-| 4        | False          | False                        | 80            | True        | 35           | 1500         | 3                 | True              | Landing allowed      |
+| PC 1     | True           | True                         | 100           | False       | 30           | 2000         | 5                 | False             | Landing Allowed      |
+| PC 2     | True           | False                        | 150           | False       | 40           | 1000         | 4                 | False             | Landing Denied       |
+| PC 3     | False          | True                         | 100           | False       | 40           | 600          | 4                 | False             | Landing Denied       |
+| PC 4     | False          | False                        | 80            | True        | 35           | 1500         | 3                 | True              | Landing Allowed      |
 
 ### Implementation
+Only one function was implemented `test_air_traffic_control` which receives all the parameters defined for the class. For passing the parameters the test uses `mark.parametrize`.
 
 ## Clause Coverage
 In clause coverage, also known as condition coverage,  each clause must evaluate to both True and False at least once during testing. We will evaluate 7 clauses.
 
 ### Test suite
-Clause coverage in the test suite is achieved for all classes.
+Clause coverage in the test suite is achieved for all classes. I decided not to choose only 7 since I realized with few test cases I could test the complete clause coverage which accounts for guaranteeing to test each clause independently.
 
-| **Case** | `runway_clear` | `alternate_runway_available` | `plane_speed` | `emergency` | `wind_speed` | `visibility` | `airport_traffic` | `priority_status` |
-|----------|----------------|------------------------------|---------------|-------------|--------------|--------------|-------------------|-------------------|
-| 1        | True           | True                         | 100           | False       | 40           | 2000         | 5                 | False             | 
-| 2        | True           | False                        | 160           | False       | 80           | 2000         | 6                 | False             |
-| 3        | False          | True                         | 100           | False       | 40           | 800          | 3                 | False             |
-| 4        | False          | False                        | 100           | True        | 50           | 600          | 2                 | True              |
+| **Case** | `runway_clear` | `alternate_runway_available` | `plane_speed` | `emergency` | `wind_speed` | `visibility` | `airport_traffic` | `priority_status` | **Expected Outcome** |
+|----------|----------------|------------------------------|---------------|-------------|--------------|--------------|-------------------|-------------------|----------------------|
+| CC 1     | True           | True                         | 100           | False       | 40           | 2000         | 5                 | False             | Landing Allowed      |
+| CC 2     | True           | False                        | 160           | False       | 80           | 2000         | 6                 | False             | Landing Denied       |
+| CC 3     | False          | True                         | 100           | False       | 40           | 800          | 3                 | False             | Landing Denied       |
+| CC 4     | False          | False                        | 100           | True        | 50           | 600          | 2                 | True              | Landing Allowed      |
 
 Demonstration:
 1. `runway_clear`:
@@ -107,4 +108,8 @@ Demonstration:
    - **False** in Case 1, Case 2, and Case 3 (priority status = False).
    - **True** in Case 4 (priority status = True). 
 
+### Subsumption
+My test set for clause coverage subsumes predicate coverage. It evaluates `p` to `True` in CC 1; and to `False` in CC 2, CC 3 and CC 4. For derived predicate `runway_available` it evaluates to `True` in CC 1, CC 2 and CC 3; and to `False` in CC 4.
+
 ### Implementation
+The same function used in Predicate Coverage testing (`test_air_traffic_control`) was used and only new test values were added, still using `mark.parametrize`.
