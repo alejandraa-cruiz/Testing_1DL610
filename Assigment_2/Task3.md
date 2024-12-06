@@ -9,7 +9,7 @@ Note:
 - Derived predicate `runway_available` is a logical condition resulted from 2 other predicates (`runway_clear` and `alternate_runway_available`)
   - runway_available = `runway_clear` OR `alternate_runway_available`
 - Predicate `p` combines conditions `runway_available`, `safe_speed`, `not_emergency`, `safe_weather` and `acceptable_traffic`
-  - `p = runway available and safe speed and not emergency and safe weather and acceptable traffic`
+  - `p = runway available AND safe speed AND NOT emergency AND safe weather AND acceptable traffic`
   - runway_available is a logical expression but not a clause on its own
   - `p` indirectly includes `runway_clear` and `alternate_runway_available`
   
@@ -62,8 +62,49 @@ Predicate coverage is achieved for `p` because test case 1 evaluates to `True` a
 ### Implementation
 
 ## Clause Coverage
-In clause coverage, also known as condition coverage,  each clause must evaluate to both True and False at least once during testing.
+In clause coverage, also known as condition coverage,  each clause must evaluate to both True and False at least once during testing. We will evaluate 7 clauses.
 
 ### Test suite
+Clause coverage in the test suite is achieved for all classes.
+
+| **Case** | `runway_clear` | `alternate_runway_available` | `plane_speed` | `emergency` | `wind_speed` | `visibility` | `airport_traffic` | `priority_status` |
+|----------|----------------|------------------------------|---------------|-------------|--------------|--------------|-------------------|-------------------|
+| 1        | True           | True                         | 100           | False       | 40           | 2000         | 5                 | False             | 
+| 2        | True           | False                        | 160           | False       | 80           | 2000         | 6                 | False             |
+| 3        | False          | True                         | 100           | False       | 40           | 800          | 3                 | False             |
+| 4        | False          | False                        | 100           | True        | 50           | 600          | 2                 | True              |
+
+Demonstration:
+1. `runway_clear`:
+   - **True** in Case 1 and Case 2.
+   - **False** in Case 3 and Case 4.
+
+2. `alternate_runway_available`:
+   - **True** in Case 1 and Case 3.
+   - **False** in Case 2 and Case 4.
+
+3. `plane_speed < 150` (safe_speed):
+   - **True** in Case 1, Case 3, and Case 4 (plane speeds = 100, 100, 100).
+   - **False** in Case 2 (plane speed = 160).
+
+4. `emergency`:
+   - **False** in Case 1, Case 2, and Case 3 (emergency = False).
+   - **True** in Case 4 (emergency = True).
+
+5. `wind_speed <= 40` (safe_weather):
+   - **True** in Case 1 and Case 3 (wind speed = 40, 40).
+   - **False** in Case 2 and Case 4 (wind speed = 80, 50).
+
+6. `visibility >= 1000` (safe_weather):
+   - **True** in Case 1 and Case 2 (visibility = 2000).
+   - **False** in Case 3 and Case 4 (visibility = 800, 600).
+
+7. `airport_traffic <= 5` (acceptable_traffic):
+   - **True** in Case 3 and Case 4 (airport traffic = 3, 2).
+   - **False** in Case 1 and Case 2 (airport traffic = 5, 6).
+
+8. `priority_status`:
+   - **False** in Case 1, Case 2, and Case 3 (priority status = False).
+   - **True** in Case 4 (priority status = True). 
 
 ### Implementation
