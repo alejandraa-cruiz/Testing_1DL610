@@ -1,5 +1,5 @@
 import pytest
-from air_traffic_control import air_traffic_control
+from Assigment_2.air_traffic_control import air_traffic_control
 
 class TestAirTrafficControl:
 
