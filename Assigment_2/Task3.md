@@ -113,3 +113,26 @@ My test set for clause coverage subsumes predicate coverage. It evaluates `p` to
 
 ### Implementation
 The same function used in Predicate Coverage testing (`test_air_traffic_control`) was used and only new test values were added, still using `mark.parametrize`.
+
+## Claus Coverage one at a time
+To fully demonstrate clause coverage by modifying one clause a time another test set was defined.
+
+### Test Suite
+A base case is defined on CC 5 and then only a value at a time is modified. The last 3 test cases test particular conditions (ex. traffic override).
+
+| **Case**  | `runway_clear` | `alternate_runway_available` | `plane_speed` | `emergency` | `wind_speed` | `visibility` | `airport_traffic` | `priority_status` | **Expected Outcome** |
+|-----------|----------------|------------------------------|---------------|-------------|--------------|--------------|-------------------|-------------------|----------------------|
+| **CC 5**  | True           | True                         | 100           | False       | 40           | 2000         | 5                 | False             | Landing Allowed      |
+| **CC 6**  | False          | True                         | 100           | False       | 40           | 2000         | 5                 | False             | Landing Allowed      |
+| **CC 7**  | True           | False                        | 100           | False       | 40           | 2000         | 5                 | False             | Landing Allowed      |
+| **CC 8**  | True           | True                         | 160           | False       | 40           | 2000         | 5                 | Landing Denied    |
+| **CC 9**  | True           | True                         | 100           | True        | 40           | 2000         | 5                 | False             | Landing Denied       |
+| **CC 10** | True           | True                         | 100           | False       | 45           | 2000         | 5                 | False             | Landing Denied       |
+| **CC 11** | True           | True                         | 100           | False       | 40           | 800          | 5                 | False             | Landing Denied       |
+| **CC 12** | True           | True                         | 100           | False       | 40           | 2000         | 8                 | False             | Landing Denied       |
+| **CC 13** | True           | True                         | 100           | False       | 40           | 2000         | 8                 | True              | Landing Allowed      |
+| **CC 14** | True           | True                         | 100           | False       | 50           | 2000         | 5                 | True              | Landing Allowed      |
+| **CC 15** | True           | True                         | 100           | True        | 40           | 2000         | 5                 | True              | Landing Allowed      |
+
+### Implementation
+The same function used in Predicate Coverage testing (`test_air_traffic_control`) was used and only new test values were added, still using `mark.parametrize`.
