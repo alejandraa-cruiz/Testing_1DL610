@@ -13,6 +13,17 @@ from Assigment_2.air_traffic_control import air_traffic_control
         (True, False, 160, False, 40, 2000, 6, False, "Landing Denied"),    #CC 2
         (False, True, 100, False, 40, 800, 3, False, "Landing Denied"),     #CC 3
         (False, False, 100, True, 50, 600, 2, True, "Landing Allowed"),     #CC 4
+        (True, True, 100, False, 40, 2000, 5, False, "Landing Allowed"),    # CC 5
+        (False, True, 100, False, 40, 2000, 5, False, "Landing Allowed"),   # CC 6
+        (True, False, 100, False, 40, 2000, 5, False, "Landing Allowed"),   # CC 7
+        (True, True, 160, False, 40, 2000, 5, False, "Landing Denied"),     # CC 8
+        (True, True, 100, True, 40, 2000, 5, False, "Landing Denied"),      # CC 9
+        (True, True, 100, False, 45, 2000, 5, False, "Landing Denied"),     # CC 10
+        (True, True, 100, False, 40, 800, 5, False, "Landing Denied"),      # CC 11
+        (True, True, 100, False, 40, 2000, 8, False, "Landing Denied"),     # CC 12
+        (True, True, 100, False, 40, 2000, 8, True, "Landing Allowed"),     # CC 13
+        (True, True, 100, False, 50, 2000, 5, True, "Landing Allowed"),     # CC 14
+        (True, True, 100, True, 40, 2000, 5, True, "Landing Allowed"),      # CC 15
     ],
 )
 
